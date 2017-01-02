@@ -1267,7 +1267,7 @@ namespace TS3AudioBot
 			}
 		}
 
-		[Command(Private, "unsubscribe", "Only lets you hear the music in active channels again.")]
+		[Command(AnyVisibility, "unsubscribe", "Only lets you hear the music in active channels again.")]
 		public void CommandUnsubscribe(ExecutionInformation info)
 		{
 			TargetManager.WhisperClientUnsubscribe(info.TextMessage.InvokerId);
