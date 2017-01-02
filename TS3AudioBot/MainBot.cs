@@ -330,7 +330,7 @@ namespace TS3AudioBot
 			PlaylistManager.ClearFreelist();
 		}
 
-		[Command(AnyVisibility, "eval", "Executes a given command or string")]
+		[Command(Admin, "eval", "Executes a given command or string")]
 		[Usage("<command> <arguments...>", "Executes the given command on arguments")]
 		[Usage("<strings...>", "Concat the strings and execute them with the command system")]
 		public ICommandResult CommandEval(ExecutionInformation info, IEnumerable<ICommand> arguments, IEnumerable<CommandResultType> returnTypes)
@@ -376,7 +376,7 @@ namespace TS3AudioBot
 				return "Clientname: " + client;
 		}
 
-		[Command(AnyVisibility, "help", "Shows all commands or detailed help about a specific command.")]
+		[Command(Admin, "help", "Shows all commands or detailed help about a specific command.")]
 		[Usage("[<command>]", "Any currently accepted command")]
 		[RequiredParameters(0)]
 		public string CommandHelp(ExecutionInformation info, params string[] parameter)
@@ -578,7 +578,7 @@ namespace TS3AudioBot
 			return HistoryManager.SearchParsed(query);
 		}
 
-		[Command(AnyVisibility, "if")]
+		[Command(Admin, "if")]
 		[Usage("<argument0> <comparator> <argument1> <then>", "Compares the two arguments and returns or executes the then-argument")]
 		[Usage("<argument0> <comparator> <argument1> <then> <else>", "Same as before and return the else-arguments if the condition is false")]
 		public ICommandResult CommandIf(ExecutionInformation info, IEnumerable<ICommand> arguments, IEnumerable<CommandResultType> returnTypes)
@@ -917,7 +917,7 @@ namespace TS3AudioBot
 			return PlayManager.Next(info.Session.Client);
 		}
 
-		[Command(Public, "pm", "Requests a private session with the ServerBot so you can invoke private commands.")]
+		[Command(Admin, "pm", "Requests a private session with the ServerBot so you can invoke private commands.")]
 		public string CommandPM(ExecutionInformation info)
 		{
 			info.Session.IsPrivate = true;
@@ -990,7 +990,7 @@ namespace TS3AudioBot
 			return PlayManager.Previous(info.Session.Client);
 		}
 
-		[Command(AnyVisibility, "print", "Lets you format multiple parameter to one.")]
+		[Command(Admin, "print", "Lets you format multiple parameter to one.")]
 		public string CommandPrint(params string[] parameter)
 		{
 			// << Desing changes expected >>
@@ -1019,7 +1019,7 @@ namespace TS3AudioBot
 			}
 		}
 
-		[Command(Public, "quiz", "Enable to hide the songnames and let your friends guess the title.")]
+		[Command(Admin, "quiz", "Enable to hide the songnames and let your friends guess the title.")]
 		[Usage("[(on|off)]", "on or off")]
 		[RequiredParameters(0)]
 		public string CommandQuiz(ExecutionInformation info, string parameter)
@@ -1082,7 +1082,7 @@ namespace TS3AudioBot
 			return null;
 		}
 
-		[Command(AnyVisibility, "rng", "Gets a random number.")]
+		[Command(Admin, "rng", "Gets a random number.")]
 		[Usage("", "Gets a number between 0 and 2147483647")]
 		[Usage("<max>", "Gets a number between 0 and <max>")]
 		[Usage("<min> <max>", "Gets a number between <min> and <max>")]
@@ -1187,7 +1187,7 @@ namespace TS3AudioBot
 			AudioFramework.Stop();
 		}
 
-		[Command(Private, "subscribe", "Lets you hear the music independent from the channel you are in.")]
+		[Command(AnyVisibility, "subscribe", "Lets you hear the music independent from the channel you are in.")]
 		public void CommandSubscribe(ExecutionInformation info)
 		{
 			TargetManager.WhisperClientSubscribe(info.TextMessage.InvokerId);
@@ -1199,7 +1199,7 @@ namespace TS3AudioBot
 			TargetManager.WhisperChannelSubscribe(info.Session.Client.ChannelId, true);
 		}
 
-		[Command(AnyVisibility, "take", "Take a substring from a string")]
+		[Command(Admin, "take", "Take a substring from a string")]
 		[Usage("<count> <text>", "Take only <count> parts of the text")]
 		[Usage("<count> <start> <text>", "Take <count> parts, starting with the part at <start>")]
 		[Usage("<count> <start> <delimiter> <text>", "Specify another delimiter for the parts than spaces")]
@@ -1279,7 +1279,7 @@ namespace TS3AudioBot
 			TargetManager.WhisperChannelUnsubscribe(info.Session.Client.ChannelId, true);
 		}
 
-		[Command(AnyVisibility, "volume", "Sets the volume level of the music.")]
+		[Command(Admin, "volume", "Sets the volume level of the music.")]
 		[Usage("<level>", "A new volume level between 0 and 100")]
 		public string CommandVolume(ExecutionInformation info, string parameter)
 		{
